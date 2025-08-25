@@ -3,12 +3,12 @@ import { Layout } from "./pages/Layout/Layout";
 import { Animal } from "./pages/Animal/Animal";
 import { Animals } from "./pages/Animals/Animals";
 import { Home } from "./pages/Home/Home";
-import { animalsLoader } from "./loaders/animalsLoader";
+import { getAnimals } from "./services/animalService";
 
 export const appRouter = createBrowserRouter([
   {
     path: '/',
-    loader: animalsLoader,
+    loader: getAnimals,
     element: <Layout />,
     children: [
       {
