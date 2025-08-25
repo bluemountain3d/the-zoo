@@ -3,7 +3,7 @@
 import { RouterProvider } from "react-router";
 import { appRouter } from "./Router";
 
-function App() {
+const App = () => {
   return <>
   <RouterProvider router={appRouter}></RouterProvider>
   </>;
