@@ -1,0 +1,9 @@
+@use '../abstracts/variables' as var;
+@use '../abstracts/functions' as fn;
+@use '../abstracts/mixins' as mx;
+
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}

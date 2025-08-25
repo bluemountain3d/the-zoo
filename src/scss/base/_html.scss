@@ -1,0 +1,7 @@
+@use '../abstracts/variables' as var;
+@use '../abstracts/functions' as fn;
+@use '../abstracts/mixins' as mx;
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
