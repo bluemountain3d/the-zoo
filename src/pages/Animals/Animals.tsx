@@ -1,9 +1,10 @@
-import { Link, useLoaderData } from 'react-router';
+import { Link } from 'react-router';
 import './Animals.scss';
-import type { AnimalsLoader } from '../../loaders/animalsLoader';
+import { AnimalsContext } from '../../contexts/animalsContext';
+import { useContext } from 'react';
 
 export const Animals = () => {
-  const { animals } = useLoaderData() as AnimalsLoader
+  const { animals } = useContext(AnimalsContext);
 
   return (
     <section className="animals">
