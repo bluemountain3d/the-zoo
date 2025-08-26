@@ -4,6 +4,7 @@ import { Animal } from "./pages/Animal/Animal";
 import { Animals } from "./pages/Animals/Animals";
 import { Home } from "./pages/Home/Home";
 import { animalsLoader } from "./loaders/animalsLoader";
+import { ErrorPage } from "./pages/ErrorPage/ErrorPage";
 
 export const appRouter = createBrowserRouter([
   {
@@ -21,8 +22,11 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: 'animal/:id',
-        element: <Animal />
+        loader: animalsLoader,
+        element: <Animal />,
+        // errorElement: <AnimalNotFound />
       },
-    ]
+    ],
+    errorElement: <ErrorPage />
   }
 ]);
