@@ -8,6 +8,7 @@ import { animalsLoader } from "./loaders/animalsLoader";
 export const appRouter = createBrowserRouter([
   {
     path: '/',
+    loader: animalsLoader,
     element: <Layout />,
     children: [
       {
@@ -16,7 +17,6 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: 'animals',
-        loader: animalsLoader,
         element: <Animals />
       },
       {
