@@ -1,0 +1,104 @@
+.animals {
+
+  &__heading {
+    width: 100%;
+    padding-block: 6rem;
+    // margin-block-end: 2rem;
+  }
+
+  &__title {
+    font-size: 4rem;
+  }
+
+
+  &__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    @media screen and (min-width: 720px) { 
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: 1080px) { 
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  &__image-link {
+    box-shadow: 0 .125rem 0.25rem rgba(black, 0.125);
+    transition: box-shadow .3s ease;
+
+    &:hover {
+      box-shadow: 0 .25rem 0.5rem rgba(black, 0.25);
+    }
+  }
+
+  &__image-wrapper {
+    flex-shrink: 0;
+    width: min(33dvw, 10rem);
+    background-color: #f9fbff;
+    padding: .5rem;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item-heading {
+    font-size: 1.75rem;
+  }
+
+  &__item-title {
+    font-size: 1em;
+    line-height: 1.2;
+    font-weight: 700;
+
+    &:has(+ *) {
+      // margin-bottom: .25rem;
+    }
+  }
+
+  &__item-subtitle {
+    font-size: 0.5em;
+    line-height: 1.2;
+    font-style: italic;
+  }
+
+  &__item-description {
+    align-self: stretch;
+    margin-block: 1rem;
+  }
+
+  &__item-status-bar {}
+  &__item-status {}
+
+  &__go-to-btn {
+    margin-top: 1rem;
+    padding: .5em 1.5em;
+    background-color: navy;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+      background-color: rgb(64, 64, 151);
+    }
+  }
+}
