@@ -12,14 +12,13 @@ section {
   &-boxed {
     @extend .container;
     max-width: var.$maxContentWidth;
-    margin-inline: auto;
-    padding-inline: clamp(0.75rem, 3.125%, 0.03125 * var.$maxContentWidth);
+    margin-inline: max(.75rem, max(3.125cqw, (100dvw - var.$maxContentWidth) / 2));
   }
 
   &-narrow {
     @extend .container;
     max-width: min(70%, 0.7 * var.$maxContentWidth);
-    padding-inline: clamp(0.75rem, 3.125%, 0.03125 * 0.7 * var.$maxContentWidth);
+    margin-inline: max(.75rem, max(3.125cqw, (100dvw - var.$maxContentWidth * 0.8) / 2));
   }
 
   &--no-gap {
