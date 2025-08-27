@@ -16,3 +16,15 @@ export const getAnimals = async (): Promise<Animal[]> => {
   setItem('animals', res);
   return res;
 }
+
+export const getAnimalById = async (id: number): Promise<Animal | undefined> => {
+  // Check för att se om animals finns i localstorage
+  const cachedAnimals = getItem('animals');
+  if (cachedAnimals) {
+    const animals = cachedAnimals as Animal[];
+    return animals.find(animal => animal.id === id);
+  }
+
+  // Om inte data finns
+  return undefined
+}

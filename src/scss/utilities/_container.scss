@@ -7,18 +7,23 @@ section {
 }
 
 .container {
+  container-type: inline-size;
+  position: relative;
   width: 100%;
 
   &-boxed {
     @extend .container;
+    margin: 0 auto;
     max-width: var.$maxContentWidth;
-    margin-inline: max(.75rem, max(3.125cqw, (100dvw - var.$maxContentWidth) / 2));
+    // padding-inline: max(.75rem, max(3.125cqw, (100dvw - var.$maxContentWidth) / 2));
+    padding-inline: clamp(0.75rem, Round(3.125cqw, 1px), Round(var.$maxContentWidth * 0.03125));
   }
 
   &-narrow {
     @extend .container;
-    max-width: min(70%, 0.7 * var.$maxContentWidth);
-    margin-inline: max(.75rem, max(3.125cqw, (100dvw - var.$maxContentWidth * 0.8) / 2));
+    margin: 0 auto;
+    max-width: Round(min(66.666667%, 0.666667 * var.$maxContentWidth), 1px);
+    // padding-inline: max(.75rem, max(3.125cqw, (100dvw - var.$maxContentWidth * 0.8) / 2));
   }
 
   &--no-gap {
