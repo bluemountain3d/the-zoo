@@ -46,8 +46,6 @@ export const Animal = () => {
     }
   }
 
-
-
   return (
     <section className='animal'>
       <div className="container-boxed animal__inner">
@@ -64,9 +62,6 @@ export const Animal = () => {
           <p className="animal__description">{animal.longDescription}</p>
           <div className="animal__status-wrapper">
             <div className="animal__status">
-              {/* 
-                - När ett djur inte har fått mat på tre timmar skall en indikation på att djuret snart behöver matas visas.
-              */}
               <div className="animal__feed-status">
                 <p className="animal__status-label">Senast matad:</p>
                 <p className="animal__last-fed">{feedingStatus.lastFedFormatted}</p>
@@ -77,13 +72,13 @@ export const Animal = () => {
               <div className="animal__feed-status">
                 <p className="animal__status-label">Kan matas igen:</p>
                 <p className="animal__last-fed">{feedingStatus.canFeedAgain}</p>
-                <p className="animal__status-message">{/* Meddelande från logik */} Statusmeddelande</p>
+                {/* <p className="animal__status-message"></p> */}
               </div>            
             </div>
             <button 
               className={`animal__feed-btn ${feedingStatus.statusClass}`}
               onClick={handleFeed}
-              disabled={!feedingStatus}
+              disabled={!feedingStatus.canFeed}
             >
               Ge mat!
             </button>

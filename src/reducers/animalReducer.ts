@@ -21,7 +21,7 @@ export const AnimalReducer = (animals: Animal[], action: AnimalAction) => {
 
       setItem('animals', updatedAnimals)
 
-      return {...animals, animals: updatedAnimals}
+      return updatedAnimals;
     }
     
     default:
