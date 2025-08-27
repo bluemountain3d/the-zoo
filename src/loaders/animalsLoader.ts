@@ -6,7 +6,6 @@ export type AnimalsLoader = {
 }
 
 export const animalsLoader = async (): Promise<AnimalsLoader> => {
-  console.log('Loader called');
   try {
     const animals = await getAnimals();
     console.log('Animals loaded:', animals);
