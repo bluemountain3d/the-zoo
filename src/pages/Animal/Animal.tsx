@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import './Animal.scss';
+// import './Animal.scss';
 import { AnimalsContext } from '../../contexts/animalsContext';
 import { useParams } from 'react-router';
 import { getFeedingStatus } from '../../utils/getFeedingStatus';
