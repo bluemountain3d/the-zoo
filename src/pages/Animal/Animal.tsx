@@ -51,7 +51,14 @@ export const Animal = () => {
       <div className="container-boxed animal__inner">
         <div className="animal__image-wrapper">
           <picture>
-            <img src={animal.imageUrl} alt={`Bild på djuret ${Image.name}`} className="animal__image" />
+            <img 
+              src={animal.imageUrl} 
+              alt={`Bild på djuret ${Image.name}`} 
+              className="animal__image" 
+              onError={(e) => {
+                e.currentTarget.src = '/placeholder.avif'
+              }}
+            />
           </picture>
         </div>
         <div className="animal__details">

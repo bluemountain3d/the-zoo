@@ -37,7 +37,7 @@ export const Animals = () => {
                       alt={`Bid på ${animal.name} (${animal.latinName})`}
                       className='animals__image'
                       onError={(e) => {
-                        e.currentTarget.src = '/placeholder.jpeg'
+                        e.currentTarget.src = '/placeholder.avif'
                       }}
                       width="256"
                     />

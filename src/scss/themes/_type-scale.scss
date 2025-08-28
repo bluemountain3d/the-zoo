@@ -1,0 +1,13 @@
+:root {
+  --fs-clamp: round(clamp(1rem, 0.7642rem + 1.0142dvw, 1.125rem), 1px);
+
+  --fs-100: calc(var(--fs-clamp) * 0.75);
+  --fs-200: calc(var(--fs-clamp) * 0.875);
+  --fs-300: calc(var(--fs-clamp) * 1);
+  --fs-400: calc(var(--fs-clamp) * 1.5);
+  --fs-500: calc(var(--fs-clamp) * 2);
+  --fs-600: calc(var(--fs-clamp) * 2.5);
+  --fs-700: calc(var(--fs-clamp) * 3);
+  --fs-800: calc(var(--fs-clamp) * 4);
+  --fs-900: calc(var(--fs-clamp) * 5);
+}
