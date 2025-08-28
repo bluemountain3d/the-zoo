@@ -16,11 +16,24 @@ export const Animals = () => {
   // Destrukturera om context finns
   const { animals } = context;
 
+  const formatAnimalPageLink = (name: string) => {
+    const lastChar = name.slice(-1).toLowerCase();
+    const pluralName = lastChar === 's' ? name : `${name}s`;
+    return `Gå till ${pluralName} sida`;
+  };
+
   return (
-    <section className="animals">
-      <div className="animals__heading container-boxed">
-        <h1 className='animals__title'>Våra djur</h1>
+    <section className="animals page-section">
+      
+      <div className="animals__hero">
+        <div className="animals__hero-content container-boxed">
+          <hgroup className="animals__heading heading-group-xl">
+            <h1 className="animals__title heading-group__title">Våra djur</h1>
+            <p className="animals__subtitle heading-group__subtitle">En härlig blandning av olika arter.</p>
+          </hgroup>
+        </div>
       </div>
+
       <div className="container-boxed animals__inner">
         <ul className="animals__list">
           {animals.map((animal) => {
@@ -45,20 +58,20 @@ export const Animals = () => {
                 </div>
               </Link>
               <div className='animals__details'>
-                <hgroup className='animals__item-heading'>
-                  <h2 className='animals__item-title'>{animal.name}</h2>
-                  <p className='animals__item-subtitle'>({animal.latinName})</p>
+                <hgroup className='animals__item-heading heading-group-sm'>
+                  <h2 className='animals__item-title heading-group__title'>{animal.name}</h2>
+                  <p className='animals__item-subtitle heading-group__subtitle'>({animal.latinName})</p>
                 </hgroup>
                 <p className='animals__item-description'>{animal.shortDescription}</p> 
                 <div className='animals__item-status-bar'>
                   <div className="animals__item-status">
-                    Status: <span className={feedingStatus.statusClass}>{feedingStatus.statusMessage}</span>
+                    Status: <span className={feedingStatus.statusClass}>{`${animal.name} ${feedingStatus.statusMessage}`}</span>
                   </div>
                 </div>
-                <Link to={`/animal/${animal.id}`} className='animals__go-to-btn'>
-                    Visa mer information om djuret
-                </Link>
               </div>
+              <Link to={`/animal/${animal.id}`} className='animals__go-to-btn'>
+                  {formatAnimalPageLink(animal.name)}
+              </Link>
             </li>
             );
           })}
