@@ -18,20 +18,20 @@ export const getFeedingStatusInfo = (hoursAgo: number, rules: { warningHours: nu
   if (hoursAgo >= rules.hungryHours) {
     return {
       canFeed: true,
-      statusMessage: "Djuret behöver mat!",
+      statusMessage: "behöver mat!",
       statusClass: "status--hungry"
     };
   }
   if (hoursAgo >= rules.warningHours) {
     return {
       canFeed: false,
-      statusMessage: "Djuret kommer snart behöva mat",
+      statusMessage: "kommer snart behöva mat",
       statusClass: "status--warning"
     };
   }
   return {
     canFeed: false,
-    statusMessage: "Djuret är mätt",
+    statusMessage: "är mätt",
     statusClass: "status--fed"
   };
 }
@@ -66,7 +66,7 @@ export const getFeedingStatus = (lastFed: string, viewType: 'detail' | 'overview
 
 
 
-
+// Gammla funktionen innan refaktorering
 export const getFeedingStatus_x = (lastFed: string, viewType: 'detail' | 'overview') => {
   const lastFedDate = new Date(lastFed);
   const now = new Date();
@@ -103,14 +103,14 @@ export const getFeedingStatus_x = (lastFed: string, viewType: 'detail' | 'overvi
     lastFedFormatted: formatDate(lastFedDate),
     canFeedAgain: formatDate(canFeedAgain),
     statusMessage: hoursAgo >= hungryHours
-      ? "Djuret behöver mat!" 
+      ? "behöver mat!" 
       : hoursAgo >= hungryHours 
-        ? "Djuret kommer snart behöva mat"
-        : "Djuret är mätt",
+        ? "kommer snart behöva mat"
+        : "är mätt",
     statusClass: hoursAgo >= hungryHours
       ? "status--hungry" 
       : hoursAgo >= warningHours 
-        ? "status--warning" 
+        ? "status--starving" 
         : "status--fed"
   };
 };
