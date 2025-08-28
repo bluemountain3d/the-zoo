@@ -9,6 +9,6 @@ import type { AnimalAction } from "../reducers/animalReducer";
 export type AnimalsContextType = {
   animals: Animal[];
   dispatch: Dispatch<AnimalAction>;
-};
+} | null;
 
 export const AnimalsContext = createContext<AnimalsContextType | null>(null);
