@@ -2,33 +2,49 @@ import { useContext } from 'react';
 import './Animal.scss';
 import { AnimalsContext } from '../../contexts/animalsContext';
 import { useParams } from 'react-router';
+import { getFeedingStatus } from '../../utils/getFeedingStatus';
+import { AnimalActionType } from '../../reducers/animalReducer';
+import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 
 export const Animal = () => {
-  const { animals } = useContext(AnimalsContext);
+  const context = useContext(AnimalsContext);
   const { id } = useParams();
 
-  const animal = animals.find(a => a.id === +(id || 0));
+  // Null-check för att se om context existerar.
+  if (!context) {
+    return <ErrorMessage message="Ett fel uppstod: data kunde inte laddas." />;
+  }
 
+  // Check för att kolla så id inte är undefined
+  if (!id) {
+    return <ErrorMessage message="Inget djur specificerat." />;
+  }
+
+  // Destrukturera om context finns
+  const { animals, dispatch } = context;
+
+  // Hitta enskilt djur från listan med djur med id från params
+  const animal = animals.find(a => a.id === +(id || '-1'));
+
+  // Check om jur finns 
   if (!animal) {
-    return <p>Tyvärr! Hittar inte djuret. Det kanske sover...</p>
+    return <ErrorMessage 
+      message="Tyvärr! Hittar inte djuret. Det kanske sover..." 
+      linkText="Gå tillbaka till våra djur"
+      linkUrl="/animals"
+    />;
   }
 
-  const dateTransform = (dateStr) => {
-    const date = new Date(dateStr);
+  const feedingStatus = getFeedingStatus(animal.lastFed, 'detail');
 
-    return {
-      date: date, // För tidsberäkningar
-      display: date.toLocaleString('sv-SE', {
-        year: 'numeric',
-        month: '2-digit', 
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit'
-      }) // "2021-04-15 14:09"
-    };
+  const handleFeed = () => {
+    if (animal && feedingStatus.canFeed) {
+      dispatch({
+        type: AnimalActionType.feedAnimal,
+        payload: animal.id.toString()
+      });
+    }
   }
-
-
 
   return (
     <section className='animal'>
@@ -46,28 +62,25 @@ export const Animal = () => {
           <p className="animal__description">{animal.longDescription}</p>
           <div className="animal__status-wrapper">
             <div className="animal__status">
-              {/* 
-                - När ett djur inte har fått mat på tre timmar skall en indikation på att djuret snart behöver matas visas.
-              */}
               <div className="animal__feed-status">
                 <p className="animal__status-label">Senast matad:</p>
-                <p className="animal__last-fed">{dateTransform(animal.lastFed).display}</p>
-                <p className="animal__status-message">{/* Meddelande från logik */} Statusmeddelande</p>
+                <p className="animal__last-fed">{feedingStatus.lastFedFormatted}</p>
+                <p className={`animal__status-message ${feedingStatus.statusClass}`}>
+                  {feedingStatus.statusMessage}
+                </p>
               </div>
               <div className="animal__feed-status">
                 <p className="animal__status-label">Kan matas igen:</p>
-                <p className="animal__last-fed">{dateTransform(animal.lastFed).display}</p>
-                <p className="animal__status-message">{/* Meddelande från logik */} Statusmeddelande</p>
+                <p className="animal__last-fed">{feedingStatus.canFeedAgain}</p>
+                {/* <p className="animal__status-message"></p> */}
               </div>            
             </div>
             <button 
-              className="animal__feed-btn"
+              className={`animal__feed-btn ${feedingStatus.statusClass}`}
+              onClick={handleFeed}
+              disabled={!feedingStatus.canFeed}
             >
-              {/* 
-                - Om ett djur inte har fått mat på fyra timmar skall knappen Mata gå att klicka på.
-                - Om ett djur har fått mat inom fyra timmar skall knappen vara oklickbar.
-              */}
-              Mata
+              Ge mat!
             </button>
           </div>
           
@@ -76,17 +89,3 @@ export const Animal = () => {
     </section>
   );
 };
-
-
-// export type Animal = {
-//   id: number;
-//   name: string;
-//   latinName: string;
-//   yearOfBirth: number;
-//   shortDescription: string;
-//   longDescription: string;
-//   imageUrl: string;
-//   medicine: string;
-//   isFed: boolean;
-//   lastFed: string
-// }

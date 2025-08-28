@@ -8,7 +8,7 @@ import { AnimalsProvider } from '../../contexts/AnimalsProvider';
 export const Layout = () => {
   const { animals } = useLoaderData() as AnimalsLoader;
 
-  // Omsluter applikationen med AnimalsProvider för att ge tillgång till det delade djur-statet.
+  // Omsluter applikationens innehåll med AnimalsProvider för att ge tillgång till det delade animals-statet.
   return (
     <AnimalsProvider initialAnimals={animals}>
       <Header />
