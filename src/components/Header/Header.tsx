@@ -6,7 +6,7 @@ export const Header = () => {
     <header className="header">
       <div className="container-boxed header__inner">
         <div className="header__brand">
-          THE ZOO
+          Vårt Zoo
         </div>
         <nav className="header__nav">
           <ul className="header__nav-menu">
