@@ -2,7 +2,7 @@
 @use '../abstracts/functions' as fn;
 @use '../abstracts/mixins' as mx;
 
-section {
+.page-section {
   width: 100%;
 }
 
@@ -11,19 +11,18 @@ section {
   position: relative;
   width: 100%;
 
-  &-boxed {
+  &-boxed, &-narrow {
     @extend .container;
     margin: 0 auto;
+  }
+
+  &-boxed {
     max-width: var.$maxContentWidth;
-    // padding-inline: max(.75rem, max(3.125cqw, (100dvw - var.$maxContentWidth) / 2));
-    padding-inline: clamp(0.75rem, Round(3.125cqw, 1px), Round(var.$maxContentWidth * 0.03125));
+    padding-inline: clamp(0.75rem, Round(3.125cqw, 1px), Round(var.$maxContentWidth * 0.03125, 1px));
   }
 
   &-narrow {
-    @extend .container;
-    margin: 0 auto;
     max-width: Round(min(66.666667%, 0.666667 * var.$maxContentWidth), 1px);
-    // padding-inline: max(.75rem, max(3.125cqw, (100dvw - var.$maxContentWidth * 0.8) / 2));
   }
 
   &--no-gap {
