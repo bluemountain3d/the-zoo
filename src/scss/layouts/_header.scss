@@ -1,3 +1,58 @@
+@use '../abstracts/variables' as var;
+@use '../abstracts/functions' as fn;
+@use '../abstracts/mixins' as mx;
+
 .header {
+  z-index: 999;
   flex-shrink: 0;
+  background-color: var.$color-background-accent;
+  color: var.$color-text;
+  border-bottom: 3px solid var.$color-primary;
+
+  box-shadow: 
+    0 0 4px 2px rgba(var.$color-primary, .15),
+    0 0 12px 6px rgba(var.$color-primary, .15);
+
+  &__inner {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__brand {
+    font-size: var(--fs-500);
+    line-height: 2;
+    font-weight: var.$font-medium;
+    // text-transform: uppercase;
+  }
+
+  &__nav, &__nav-menu {
+    flex: 1;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  &__nav-item {}
+
+  &__nav-link {
+    font-size: var(--fs-300);
+    font-weight: var.$font-medium;
+    padding: .5em 1em;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var.$color-surface;
+      color: var.$color-primary;
+    }
+  }
+
+  &__nav-link.active {
+    background-color: var.$color-primary;
+    color: var.$color-text-on-primary;
+    border-bottom: none;
+  }
 }
