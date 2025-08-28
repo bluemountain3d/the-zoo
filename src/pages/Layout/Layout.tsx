@@ -1,5 +1,5 @@
 import { Outlet, useLoaderData } from 'react-router';
-import './Layout.scss';
+// import './Layout.scss';
 import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
 import type { AnimalsLoader } from '../../loaders/animalsLoader';
