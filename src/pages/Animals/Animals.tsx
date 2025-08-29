@@ -1,5 +1,4 @@
 import { Link } from 'react-router';
-// import './Animals.scss';
 import { AnimalsContext } from '../../contexts/animalsContext';
 import { useContext } from 'react';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';

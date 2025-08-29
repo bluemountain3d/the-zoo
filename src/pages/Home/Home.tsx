@@ -1,5 +1,3 @@
-// import './Home.scss';
-
 import { Link } from "react-router";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { useContext } from "react";
