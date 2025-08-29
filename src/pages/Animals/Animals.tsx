@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { getFeedingStatus } from '../../utils/getFeedingStatus';
 import { formatNamePossession } from '../../utils/formatNamePossession';
+import { Button } from '../../components/Button';
 
 export const Animals = () => {
   const context = useContext(AnimalsContext);
@@ -64,9 +65,9 @@ export const Animals = () => {
                   </div>
                 </div>
               </div>
-              <Link to={`/animal/${animal.id}`} className='animals__go-to-btn'>
-                  Gå till {formatNamePossession(animal.name)} sida
-              </Link>
+              <Button to={`/animal/${animal.id}`} variant='primary' className='animals__go-to-btn' fullWidth={true}>
+                Gå till {formatNamePossession(animal.name)} sida
+              </Button>
             </li>
             );
           })}

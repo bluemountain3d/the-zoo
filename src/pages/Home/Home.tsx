@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { useContext } from "react";
 import { AnimalsContext } from "../../contexts/animalsContext";
+import { Button } from "../../components/Button";
 
 export const Home = () => {
   const context = useContext(AnimalsContext);
@@ -29,9 +30,9 @@ export const Home = () => {
             <h1 className="heading-group__title">Välkommen till Vårt Zoo</h1>
             <p className="heading-group__subtitle">Upptäck fantastiska djur från hela världen</p>
           </hgroup>
-          <Link to="/animals" className="home__cta-button">
+          <Button to="/animals" variant="overlay" className="home__cta-button">
             Se våra djur
-          </Link>
+          </Button>
         </div>
       </div>
 
