@@ -99,6 +99,7 @@ export const Animal = () => {
                 className={`animal__feed-btn ${feedingStatus.statusClass}`}
                 onClick={handleFeed}
                 fullWidth={true}
+                disabled={!feedingStatus.canFeed}
               >
                 Ge {animal.name} mat!
               </Button>

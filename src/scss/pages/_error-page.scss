@@ -1,0 +1,23 @@
+@use '../abstracts/variables' as var;
+@use '../abstracts/functions' as fn;
+@use '../abstracts/mixins' as mx;
+
+.error-page {
+  margin-top: var(--gap-900);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+
+  }
+
+  &__message {
+    margin-block: 2em;
+  }
+
+  a {
+    text-decoration: underline;
+    color: blue;
+  }
+}

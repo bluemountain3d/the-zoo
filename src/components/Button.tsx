@@ -33,12 +33,12 @@ export const Button = ({
   const outputClasses = `${baseClasses} ${className}`.trim();
 
   // Motion variablar
-  const hoverAnimation = {
+  const hoverAnimation = disabled ? {} : {
     scaleX: fullWidth ? 1 : 1.05,
     scaleY: 1.03
   };
 
-  const tapAnimation = {
+  const tapAnimation = disabled ? {} : {
     scaleX: 0.97,
     scaleY: 0.95
   };
