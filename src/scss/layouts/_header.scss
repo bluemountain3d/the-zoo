@@ -5,6 +5,8 @@
 .header {
   z-index: 999;
   flex-shrink: 0;
+  position: sticky;
+  top: 0;
   background-color: var.$color-background-accent;
   color: var.$color-text;
   border-bottom: 3px solid var.$color-primary;
@@ -23,8 +25,8 @@
   &__brand {
     font-size: var(--fs-500);
     line-height: 2;
-    font-weight: var.$font-medium;
-    // text-transform: uppercase;
+    font-weight: var.$font-bold;
+    color: var.$color-primary;
   }
 
   &__nav, &__nav-menu {
@@ -32,6 +34,10 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-end;
+    gap: var(--gap-100);
+  }
+
+  &__nav {
     gap: 1rem;
   }
 
@@ -40,19 +46,18 @@
   &__nav-link {
     font-size: var(--fs-300);
     font-weight: var.$font-medium;
-    padding: .5em 1em;
-    border-radius: 4px;
-    transition: all 0.2s ease;
+    padding: .5em;
+    border-radius: 25%;
+    border-bottom: 4px solid transparent;
+    color: var.$color-primary;
 
-    &:hover {
-      background-color: var.$color-surface;
-      color: var.$color-primary;
+    &:not(.active):hover {
+      color: var.$color-accent;
+
     }
-  }
 
-  &__nav-link.active {
-    background-color: var.$color-primary;
-    color: var.$color-text-on-primary;
-    border-bottom: none;
+    &.active {
+      border-color: var.$color-primary;
+    }
   }
 }
