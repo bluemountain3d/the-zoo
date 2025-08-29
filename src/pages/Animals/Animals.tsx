@@ -4,6 +4,7 @@ import { AnimalsContext } from '../../contexts/animalsContext';
 import { useContext } from 'react';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { getFeedingStatus } from '../../utils/getFeedingStatus';
+import { formatNamePossession } from '../../utils/formatNamePossession';
 
 export const Animals = () => {
   const context = useContext(AnimalsContext);
@@ -15,12 +16,6 @@ export const Animals = () => {
 
   // Destrukturera om context finns
   const { animals } = context;
-
-  const formatAnimalPageLink = (name: string) => {
-    const lastChar = name.slice(-1).toLowerCase();
-    const pluralName = lastChar === 's' ? name : `${name}s`;
-    return `Gå till ${pluralName} sida`;
-  };
 
   return (
     <section className="animals page-section">
@@ -70,7 +65,7 @@ export const Animals = () => {
                 </div>
               </div>
               <Link to={`/animal/${animal.id}`} className='animals__go-to-btn'>
-                  {formatAnimalPageLink(animal.name)}
+                  Gå till {formatNamePossession(animal.name)} sida
               </Link>
             </li>
             );
