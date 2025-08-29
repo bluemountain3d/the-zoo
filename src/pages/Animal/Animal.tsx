@@ -6,6 +6,7 @@ import { getFeedingStatus } from '../../utils/getFeedingStatus';
 import { AnimalActionType } from '../../reducers/animalReducer';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { formatNamePossession } from '../../utils/formatNamePossession';
+import { Button } from '../../components/Button';
 
 export const Animal = () => {
   const context = useContext(AnimalsContext);
@@ -94,13 +95,14 @@ export const Animal = () => {
                 </div>            
               </div>
               
-              <button 
+              <Button 
+                variant='primary' 
                 className={`animal__feed-btn ${feedingStatus.statusClass}`}
                 onClick={handleFeed}
-                disabled={!feedingStatus.canFeed}
+                fullWidth={true}
               >
                 Ge {animal.name} mat!
-              </button>
+              </Button>
             </div>
           </div>
         </div>

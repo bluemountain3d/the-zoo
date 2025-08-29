@@ -146,30 +146,7 @@
 
   &__feed-btn {
     align-self: flex-end;
+    padding-block: 1.5em;
     margin-block-start: var(--gap-300);
-    width: 100%;
-    text-align: center;
-    font-weight: var.$font-medium;
-  
-    padding: .75em 1.5em;
-    background-color: var.$color-fed;
-    color: var.$color-text-on-primary;
-    border-radius: var(--gap-050);
-    transition: background-color .2s ease;
-  
-    &:Not(:disabled):hover {
-      background-color: var.$color-primary;
-    }
-  
-    &:Not(:disabled):active {
-      background-color: var.$color-secondary;
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-      opacity: .5;
-      background-color: var.$color-accent;
-      filter: saturate(0);
-    }
   }
 }
