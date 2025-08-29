@@ -1,14 +1,13 @@
 // import { useRouteError } from 'react-router';
-import './ErrorPage.scss';
 
 export const ErrorPage = () => {
   // const error = useRouteError();
 
   return (
     <section className='error-page'>
-      <h1>Oops! Något gick fel</h1>
-      <p>Ett fel inträffade när sidan skulle laddas</p>
-      <a href="/">Tillbaka till startsidan</a>
+      <h1 className="error-page__title">Oops! Något gick fel</h1>
+      <p className="error-page__message">Ett fel inträffade när sidan skulle laddas</p>
+      <a href="/" className="error-page__link">Tillbaka till startsidan</a>
     </section>
   );
 };

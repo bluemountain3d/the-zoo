@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router';
-// import './Header.scss';
 
 export const Header = () => {
   return (
