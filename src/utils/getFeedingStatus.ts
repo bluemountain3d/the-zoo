@@ -18,7 +18,7 @@ export const getFeedingStatusInfo = (hoursAgo: number, rules: { warningHours: nu
   if (hoursAgo >= rules.hungryHours) {
     return {
       canFeed: true,
-      statusMessage: "behöver mat!",
+      statusMessage: "behöver mat omgående!",
       statusClass: "status--hungry"
     };
   }
@@ -31,7 +31,7 @@ export const getFeedingStatusInfo = (hoursAgo: number, rules: { warningHours: nu
   }
   return {
     canFeed: false,
-    statusMessage: "är mätt",
+    statusMessage: "har fått mat och är mätt",
     statusClass: "status--fed"
   };
 }
