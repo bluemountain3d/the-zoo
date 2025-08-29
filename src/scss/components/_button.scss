@@ -1,0 +1,90 @@
+@use '../abstracts/variables' as var;
+@use '../abstracts/functions' as fn;
+@use '../abstracts/mixins' as mx;
+
+@use 'sass:color';
+
+.btn {
+  cursor: pointer;
+  padding: 0.75em 1.5em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  font-size: var(--fs-300);
+  line-height: 1;
+  font-weight: var.$font-medium;
+  border: none;
+  border-radius: var(--gap-050);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease
+  ;
+
+  // Width variants
+  &--full-width {
+    width: 100%;
+  }
+
+  // Variants
+  &--primary {
+    background-color: var.$color-primary-light;
+    color: var.$color-text-on-primary;
+
+    &:not(.btn--disabled):hover {
+      background-color: var.$color-primary-light-hover;
+    }
+
+    &:not(.btn--disabled):active {
+      background-color: var.$color-primary-light-active;
+    }
+  }
+
+  &--secondary {
+    background-color: var.$color-secondary;
+    color: var.$color-text-on-secondary;
+
+    &:not(.btn--disabled):hover {
+      background-color: var.$color-secondary-hover;
+    }
+
+    &:not(.btn--disabled):active {
+      background-color: var.$color-secondary-active;
+    }
+  }
+
+  &--accent {
+    background-color: var.$color-accent;
+    color: var.$color-text-on-accent;
+
+    &:not(.btn--disabled):hover {
+      background-color: var.$color-accent-hover;
+    }
+
+    &:not(.btn--disabled):active {
+      background-color: var.$color-accent-active;
+    }
+  }
+
+  &--overlay {
+    background-color: #fff;
+    color: #000;
+
+    &:not(.btn--disabled):hover {
+      background-color: #DBDBDB;
+    }
+
+    &:not(.btn--disabled):active {
+      background-color: #B8B8B8;
+    }
+  }
+
+  // Disabled
+  &--disabled, &:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.5;
+    filter: saturate(0);
+  }
+}

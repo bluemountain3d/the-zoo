@@ -1,8 +1,18 @@
 
+  @use 'sass:color' as color;
+
   // Primära färger
   $color-primary: #2d5016;
+  $color-primary-hover: color.scale($color-primary, $lightness: 15%);
+  $color-primary-active: color.scale($color-primary, $lightness: -10%);
+  
   $color-primary-light: #4a7c59;
+  $color-primary-light-hover: color.scale($color-primary-light, $lightness: 15%);
+  $color-primary-light-active: color.scale($color-primary-light, $lightness: -10%);
+
   $color-secondary: #8b4513;
+  $color-secondary-hover: color.scale($color-secondary, $lightness: 15%);
+  $color-secondary-active: color.scale($color-secondary, $lightness: -10%);
 
   // Bakgrunder
   $color-background: #f8faf6;
@@ -13,6 +23,8 @@
   $color-text: #1a1a1a;
   $color-text-muted: #666666;
   $color-text-on-primary: #ffffff;
+  $color-text-on-secondary: #ffffff;
+  $color-text-on-accent: #333333;
 
   // Djur-status
   $color-fed: #14883F;
@@ -20,5 +32,8 @@
   $color-hungry: #D83C3C;
 
   // Accenter
-  $color-accent: #f97316; 
+  $color-accent: #f97316;
+  $color-accent-hover: color.scale($color-accent, $lightness: 10%);
+  $color-accent-active: color.scale($color-accent, $lightness: -15%);
+
   $color-border: #d1d5db;
