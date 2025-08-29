@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import { getFeedingStatus } from '../../utils/getFeedingStatus';
 import { AnimalActionType } from '../../reducers/animalReducer';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
+import { formatNamePossession } from '../../utils/formatNamePossession';
 
 export const Animal = () => {
   const context = useContext(AnimalsContext);
@@ -47,50 +48,61 @@ export const Animal = () => {
   }
 
   return (
-    <section className='animal'>
-      <div className="container-boxed animal__inner">
-        <div className="animal__image-wrapper">
-          <picture>
-            <img 
-              src={animal.imageUrl} 
-              alt={`Bild på djuret ${Image.name}`} 
-              className="animal__image" 
-              onError={(e) => {
-                e.currentTarget.src = '/placeholder.avif'
-              }}
-            />
-          </picture>
-        </div>
-        <div className="animal__details">
-          <hgroup className='animal__heading'>
-            <h2 className='animal__title'>{animal.name}</h2>
-            <p className='animal__subtitle'>({animal.latinName})</p>
+    <section className='animal page-section'>
+
+      <div className="animal__hero">
+        <div className="animal__hero-content container-boxed">
+          <hgroup className="animal__heading heading-group-xl">
+            <h1 className="animal__title heading-group__title">{formatNamePossession(animal.name)} sida</h1>
+            {/* <p className="animal__subtitle heading-group__subtitle">({animal.latinName})</p> */}
           </hgroup>
-          <p className="animal__description">{animal.longDescription}</p>
-          <div className="animal__status-wrapper">
-            <div className="animal__status">
-              <div className="animal__feed-status">
-                <p className="animal__status-label">Senast matad:</p>
-                <p className="animal__last-fed">{feedingStatus.lastFedFormatted}</p>
-                <p className={`animal__status-message ${feedingStatus.statusClass}`}>
-                  {feedingStatus.statusMessage}
-                </p>
-              </div>
-              <div className="animal__feed-status">
-                <p className="animal__status-label">Kan matas igen:</p>
-                <p className="animal__last-fed">{feedingStatus.canFeedAgain}</p>
-                {/* <p className="animal__status-message"></p> */}
-              </div>            
-            </div>
-            <button 
-              className={`animal__feed-btn ${feedingStatus.statusClass}`}
-              onClick={handleFeed}
-              disabled={!feedingStatus.canFeed}
-            >
-              Ge mat!
-            </button>
+        </div>
+      </div>
+
+      <div className="container-boxed animal__inner">
+        <div className="animal__presentation">
+          <div className="animal__image-wrapper">
+            <picture>
+              <img 
+                src={animal.imageUrl} 
+                alt={`Bild på djuret ${animal.name}`} 
+                className="animal__image" 
+                onError={(e) => {
+                  e.currentTarget.src = '/placeholder.avif'
+                }}
+              />
+            </picture>
           </div>
           
+          <div className="animal__details">
+            <p className="animal__label">Fakta om  {animal.name}:</p>
+            <p className="animal__description">{animal.longDescription}</p>
+            <div className="animal__status-wrapper">
+              <div className="animal__status">
+                <div className={`animal__last-fed ${feedingStatus.statusClass}`}>
+                  <p className="animal__label">Senast matad:</p>
+                  <p className="animal__time">{feedingStatus.lastFedFormatted}</p>
+                  <p className={`animal__status-message ${feedingStatus.statusClass}`}>
+                    {`${animal.name} ${feedingStatus.statusMessage}`}
+                  </p>
+                </div>
+
+                <div className={`animal__next-feed ${feedingStatus.statusClass}`}>
+                  <p className="animal__label">Kan matas igen:</p>
+                  <p className="animal__time">{feedingStatus.canFeedAgain}</p>
+                  {feedingStatus.canFeed ? `Nu kan ${animal.name} få mat igen` : ""}
+                </div>            
+              </div>
+              
+              <button 
+                className={`animal__feed-btn ${feedingStatus.statusClass}`}
+                onClick={handleFeed}
+                disabled={!feedingStatus.canFeed}
+              >
+                Ge {animal.name} mat!
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
