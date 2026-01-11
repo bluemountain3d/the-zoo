@@ -40,6 +40,10 @@ jobs:
         env: # Här kopplar vi GitHubs secret till Vites bygg-process
           VITE_API_BASE: ${{ secrets.VITE_API_BASE }}
 
+      - name: Create 404.html
+        # Detta kopierar index.html till 404.html i dist-mappen
+        run: cp ./dist/index.html ./dist/404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
