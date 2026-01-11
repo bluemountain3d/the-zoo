@@ -6,6 +6,7 @@ import { AnimalActionType } from '../../reducers/animalReducer';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { formatNamePossession } from '../../utils/formatNamePossession';
 import { Button } from '../../components/Button';
+import { getImageUrl } from '../../utils/getImageUrl';
 
 export const Animal = () => {
   const context = useContext(AnimalsContext);
@@ -67,7 +68,7 @@ export const Animal = () => {
           <div className='animal__image-wrapper'>
             <picture>
               <img
-                src={animal.imageUrl}
+                src={getImageUrl(animal.imageUrl)}
                 alt={`Bild på djuret ${animal.name}`}
                 className='animal__image'
                 onError={(e) => {

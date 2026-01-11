@@ -3,6 +3,7 @@ import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { useContext } from 'react';
 import { AnimalsContext } from '../../contexts/animalsContext';
 import { Button } from '../../components/Button';
+import { getImageUrl } from '../../utils/getImageUrl';
 
 export const Home = () => {
   const context = useContext(AnimalsContext);
@@ -45,7 +46,7 @@ export const Home = () => {
                 <div className='featured-animal__image-wrapper'>
                   <picture>
                     <img
-                      src={animal.imageUrl}
+                      src={getImageUrl(animal.imageUrl)}
                       alt={`Bild på djuret ${animal.name}`}
                       className='featured-animal__image'
                       onError={(e) => {
