@@ -5,6 +5,7 @@ import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { getFeedingStatus } from '../../utils/getFeedingStatus';
 import { formatNamePossession } from '../../utils/formatNamePossession';
 import { Button } from '../../components/Button';
+import { getImageUrl } from '../../utils/getImageUrl';
 
 export const Animals = () => {
   const context = useContext(AnimalsContext);
@@ -43,7 +44,7 @@ export const Animals = () => {
                   <div className='animals__image-wrapper'>
                     <picture>
                       <img
-                        src={animal.imageUrl}
+                        src={getImageUrl(animal.imageUrl)}
                         alt={`Bid på ${animal.name} (${animal.latinName})`}
                         className='animals__image'
                         onError={(e) => {
