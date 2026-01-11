@@ -37,6 +37,8 @@ jobs:
 
       - name: Build project
         run: npm run build
+        env: # Här kopplar vi GitHubs secret till Vites bygg-process
+          VITE_API_BASE: ${{ secrets.VITE_API_BASE }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
